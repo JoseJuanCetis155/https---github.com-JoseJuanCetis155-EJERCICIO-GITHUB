@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registro con pdf</title>
+        <meta name="encoding" charset="utf-8" />
+        <meta name="description" content="Una pagina de estado educativo donde se propone la visualizacion de pdf y asi como un registro de datos
+        mismos que se imprimen en un pdf proporcionado por la pagina" />
+        <meta name="keywords" content="pdf, impresion, registro, acciones, registrarse, tabla, contenido, sitio, web, internet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="css/bootstrap-grid.min.css">
+        <link href="js/bootstrap.bundle.min.js">
+        <link href="css/bootstrap-grid.rtl.css">
+        
+    </head>
+
+    <body background="fondo7.gif">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+        
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" >Sitio Pagina pdf</a>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl1EiTtIq_QB1V0c3k3ggPYi19CYgDWik7ew&usqp=CAU" alt="" width="30" height="24" class="d-inline-block align-text-top">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Registro</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link disabled">Jose Juan Aguilar Macias</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <br>
+          <br>
+          <div id="macaco" style="background-color: yellow; border-radius: 2em;">
+          <center><h2>Registro a nuestra Plataforma</h2></center>
+        </div>
+          <br>
+          <center>
+                <div class="col align-self-start" style="background-color: aqua;  border-radius: 2em;">
+                  <br>
+                  <br>
+                  <form>
+                    <input type="text" name="name" id="nick" placeholder="Nombre">  
+      <br>
+      <br>
+                    <input type="text" name="celu" id="celular" placeholder="Numero Telefonico">
+                    <br>
+                    <br>
+                    <input type="text" name="r" id="red" placeholder="Redes">  
+      <br>
+      <br>
+                    <button type="button" onclick="guardar()">Guardar</button>
+                </form>
+                <br>
+                  <br>
+                </div>
+
+          <script>
+            function guardar(){
+              var nombre=document.getElementById("nick").value ;
+              var redes=document.getElementById("red").value ;
+              var telefono=document.getElementById("celular").value ;
+              console.log(nombre +" "+ redes +" "+ telefono);
+              var fila="<tr><th>"+nombre+"</th><th>"+redes+"</th><th>"+telefono+"</th></tr>";
+              document.getElementById("tablita").innerHTML = fila;
+
+}
+
+function imprimir(){
+  document.getElementById("tablita");
+  print("tablita")
+}
+          </script>
+<br>
+<br>
+
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {background-color: coral;}
+  
+  </style>
+
+  <div style="background-color: white;  border-radius: 2em;">
+  <div id="muestra"> 
+  <table>
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Redes</th>
+      <th>Telefono</th>
+    </tr>
+    </thead>
+    <tbody id="tablita">
+
+    </tbody>
+  </table>
+</div>
+  
+<br>
+<button type="button" onclick="javascript:imprim2();">Imprimir</button>
+<br>
+<br>
+</div>
+</center>
+<script>
+  function imprim2(){
+      var mywindow = window.open('', 'PRINT');
+      mywindow.document.write('<html><head>');
+      mywindow.document.write('Reporte generado','<br><br>');
+      mywindow.document.write('Cetis 155 Josefa Ortiz de Dominguez','<br><br>');
+      mywindow.document.write('Jose Juan Aguilar Macias','<br><br>');
+    mywindow.document.write('<style>table { border-collapse: collapse;width: 100%;font-family:arial;}th, td {padding: 8px;text-align: left;border-bottom: 1px solid #ddd;} tr:hover {background-color: coral;}</style>');
+      mywindow.document.write('</head><body >');
+      mywindow.document.write(document.getElementById('muestra').innerHTML);
+      mywindow.document.write('</body></html>');
+      mywindow.document.close(); // necesario para IE >= 10
+      mywindow.focus(); // necesario para IE >= 10
+      mywindow.print();
+      mywindow.close();
+      return true;}
+  </script> 
+  <br>
+  <br>
+  <br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12" style="background-color: aqua; border-radius: 2em;">
+        <h1 style="font-size:xx-large;">Por que registrarse en nuestra plataforma</h1>
+          <img style="width: 2cm; height: 2cm; border-radius: 5em;" src="data:image/png;base64,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">
+
+      </div>
+      <div class="col align-self-end" style="background-color: gray; font-size: x-large; border-radius: 2em;">
+        La neta no se pero me apoyarias muchisimo si te registras que dios te lo pague :3
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+
+    </body>
+</html>
